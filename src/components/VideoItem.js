@@ -1,11 +1,17 @@
 import React from 'react';
 
-const VideoItem = ({ videoTitle, getDetails }) => {
-    console.log();
+const listStyleType ={
+    listStyleType: 'none',
+}
+
+const VideoItem = ({ videoTitle, getDetails, thumbnailImage, videoId }) => {
     return (
         <div>
             <ul>
-                <li onClick={() => getDetails(videoTitle)}>{ videoTitle }</li>
+                <li style={listStyleType} onClick={() => getDetails(videoId)}>
+                    <img src={thumbnailImage} alt=""/>
+                    { videoTitle }
+                </li>
             </ul>
         </div>
     )

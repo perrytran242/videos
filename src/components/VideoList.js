@@ -4,12 +4,15 @@ import VideoItem from './VideoItem';
 class VideoList extends Component {
 
     render() {
-        console.log("PROPS:", this.props);
         const renderVideoList = this.props.videoList.map( (video) => {
+            console.log(video);
             return <VideoItem 
-                        getDetails={this.props.getVideoDetails}
+                        highQualityImg={ video.snippet.thumbnails.high.url}
+                        thumbnailImage={ video.snippet.thumbnails.default.url }
+                        getDetails={ this.props.getVideoDetails }
                         videoTitle={ video.snippet.title } 
                         key={ video.id.videoId } 
+                        videoId={ video.id.videoId }
                     />
         });
 

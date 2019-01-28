@@ -8,6 +8,11 @@ import VideoDetail from './VideoDetail';
 class App extends Component {
     state = {
         videos: [],
+        videoDetails: ''
+    }
+
+    videoDetails = (details) => {
+        this.setState({videoDetails: details});
     }
 
     onYoutubeSearch = async (userSearchTerm) => {
@@ -18,18 +23,20 @@ class App extends Component {
                 }
             });
             this.setState({videos: response.data.items});
+
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
     }
     
     render() {
-        
+        console.clear();
+        console.log(this.state.videoDetails);
         return (
             <div className="ui container">
                 <SearchBar userSearch={this.onYoutubeSearch} />
-                <VideoList videoList={this.state.videos}/>
-                <VideoDetail/>
+                <VideoDetail />
+                <VideoList getVideoDetails={this.videoDetails} videoList={this.state.videos}/>
             </div>
         )
     }

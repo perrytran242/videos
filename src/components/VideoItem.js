@@ -1,11 +1,11 @@
 import React from 'react';
 
-const VideoItem = ({ videoTitle }) => {
-    console.log(videoTitle);
+const VideoItem = ({ videoTitle, getDetails }) => {
+    console.log();
     return (
         <div>
             <ul>
-                <li>{ videoTitle }</li>
+                <li onClick={() => getDetails(videoTitle)}>{ videoTitle }</li>
             </ul>
         </div>
     )

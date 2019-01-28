@@ -1,0 +1,39 @@
+import youtube from '../apis/youtube';
+import React, { Component } from 'react';
+
+import VideoList from './VideoList';
+import SearchBar from './SearchBar';
+import VideoDetail from './VideoDetail';
+
+class App extends Component {
+    state = {
+        videos: [],
+    }
+
+    onYoutubeSearch = async (userSearchTerm) => {
+        try {
+            const response = await youtube.get('/search', {
+                params: {
+                    q: userSearchTerm,
+                }
+            });
+            this.setState({videos: response.data.items});
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    
+    render() {
+        
+        return (
+            <div className="ui container">
+                <SearchBar userSearch={this.onYoutubeSearch} />
+                <VideoList videoList={this.state.videos}/>
+                <VideoDetail/>
+            </div>
+        )
+    }
+}
+
+export default App;
+

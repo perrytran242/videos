@@ -5,7 +5,6 @@ class VideoList extends Component {
 
     render() {
         const renderVideoList = this.props.videoList.map( (video) => {
-            console.log(video);
             return <VideoItem 
                         highQualityImg={ video.snippet.thumbnails.high.url}
                         thumbnailImage={ video.snippet.thumbnails.default.url }

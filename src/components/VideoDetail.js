@@ -1,9 +1,10 @@
 import React from 'react';
+import { Embed } from 'semantic-ui-react';
 
 const VideoDetail = (props) => {
-    console.log(props.videoID);
+    console.log(props);
     return (
-        <div className="ui embed" data-url={`https://www.youtube.com/embed/O6Xo21L0ybE${props.videoID}`} data-placeholder="/images/bear-waving.jpg"></div>    
+        <Embed placeholder={props.videoImage} id={props.videoID} source="youtube" />
     )
 }
 

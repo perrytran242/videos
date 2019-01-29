@@ -8,11 +8,12 @@ import VideoDetail from './VideoDetail';
 class App extends Component {
     state = {
         videos: [],
-        id: ''
+        id: '',
+        image: ''
     }
 
-    videoDetails = (id) => {
-        this.setState({ id });
+    videoDetails = (id, image) => {
+        this.setState({ id, image });
     }
 
     onYoutubeSearch = async (userSearchTerm) => {
@@ -28,12 +29,11 @@ class App extends Component {
             console.log(err);
         }
     }
-    
     render() {
         return (
             <div className="ui container">
                 <SearchBar userSearch={this.onYoutubeSearch} />
-                <VideoDetail videoID={this.state.id} />
+                <VideoDetail videoImage={ this.state.image } videoID={this.state.id} />
                 <VideoList getVideoDetails={this.videoDetails} videoList={this.state.videos} />
             </div>
         )
